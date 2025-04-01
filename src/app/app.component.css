@@ -1,0 +1,77 @@
+.header {
+  background: #6a0dad;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+mat-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flex-row {
+  display: flex;
+  align-items: stretch;
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+
+mat-form-field {
+  flex: 1;
+  min-width: 150px;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  border-radius: 2px;
+  top: 0px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.chart-container {
+  height: 400px;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,91 @@
+<mat-card>
+  <div class="header" aria-label="Pie Chart Generator">
+    <h1>Pie Chart Generator</h1>
+  </div>
+  <form [formGroup]="form" class="form-container" aria-label="Chart Form">
+    <div formArrayName="dataEntries">
+      <div
+        *ngFor="let entry of dataEntries.controls; let i = index"
+        [formGroupName]="i"
+        class="flex-row"
+      >
+        <mat-form-field floatLabel="always" boxStyle appearance="outline">
+          <mat-label matToolTip="'Name'" matTooltipPosition="'above'"
+            >Name</mat-label
+          >
+          <input
+            matInput
+            type="text"
+            formControlName="name"
+            placeholder="Enter Name"
+            aria-label="Name"
+          />
+          <mat-error
+            *ngIf="
+              dataEntries.at(i).get('name')?.invalid &&
+              dataEntries.at(i).get('name')?.touched
+            "
+          >
+            Name is required.</mat-error
+          ></mat-form-field
+        ><mat-form-field floatLabel="always" boxStyle appearance="outline">
+          <mat-label matToolTip="'Value'" matTooltipPosition="'above'"
+            >Value</mat-label
+          >
+          <input
+            matInput
+            formControlName="value"
+            placeholder="Enter Value"
+            type="number"
+            aria-label="Value"
+          />
+          <mat-error
+            *ngIf="
+              dataEntries.at(i).get('value')?.invalid &&
+              dataEntries.at(i).get('value')?.touched
+            "
+          >
+            Name is required.</mat-error
+          >
+        </mat-form-field>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="removeEntry(i)"
+          class="delete-btn"
+          aria-label="Delete"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addEntry()"
+        [disabled]="form.invalid"
+        aria-label="Add Data"
+      >
+        Add Data
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="generateChart()"
+        [disabled]="form.invalid"
+        aria-label="Generate Chart"
+      >
+        Generate Chart
+      </button>
+    </div>
+  </form>
+  <div
+    echarts
+    [options]="chartOptions"
+    *ngIf="chartOptions"
+    class="chart-container"
+    aria-label="Pie Chart"
+  ></div>
+</mat-card>
